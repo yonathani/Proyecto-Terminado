@@ -1,0 +1,38 @@
+﻿@model IEnumerable<MioBarber.Models.Horario>
+
+@{
+    ViewBag.Title = "Index";
+}
+<hr />
+
+<div class="card text-dark bg-light mb-3" style="max-width: 98rem;">
+
+    <h2>Index</h2>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Time)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-info border-dark" }) 
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-ligth border-dark" }) 
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger border-dark" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+<p>
+    @Html.ActionLink("Crear Nuevo Horario", "Create", null, new { @class = "btn btn-sm btn-primary" })
+</p>

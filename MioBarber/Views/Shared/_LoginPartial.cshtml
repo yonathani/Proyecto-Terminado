@@ -1,0 +1,44 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="nav navbar-nav navbar-right mr-auto">
+            <li class="nav-link">
+                @Html.ActionLink("Hola " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li>
+                <a class="nav-link" href="@Url.Action("Index","Barbers")">Barberos</a>
+            </li>
+            <li>
+                <a class="nav-link" href="@Url.Action("Index","Cortes")">Cortes</a>
+            </li>
+            <li>
+                <a class="nav-link" href="@Url.Action("Index","Horarios")">Horarios</a>
+            </li>
+            <li>
+                <a class="nav-link" href="@Url.Action("Index","Citas")">Citas</a>
+            </li>
+            <li>
+                <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
+            </li>
+        </ul>
+    </div>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+
+        <li>
+
+            <!-- <a class="nav-link" href="@Url.Action("Register","Account")">Registrarse</a> -->
+                </li>
+
+            <li>
+                    <a class="nav-link" href="@Url.Action("Login","Account")">Iniciar Sesion</a>
+                </li>
+        </ul>
+    }

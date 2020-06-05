@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mios Barber Shop</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+
+<body style="background-image:url(Content/Img/fondobarber.jpg); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;" id="page-top">
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary">
+        <a class="navbar-brand" href="@Url.Action("Index","Home")">Mios Barber Shop</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                @if (User.IsInRole("Barberos"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("About", "Home")">Sobre Nosotros</a>
+                    </li>
+                }
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("About", "Home")">Sobre Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Create","Citas")">Agendar Cita</a>
+                </li>
+            </ul>
+            <span class="navbar-text">
+                @Html.Partial("_LoginPartial")
+            </span>
+        </div>
+    </nav>
+
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+            <footer class="card text-white bg-success mb-2">
+                <div class="container">
+                    <div class="row">
+                        <!-- Footer Location-->
+                        <div class="col-lg-4 mb-5 mb-lg-0 text-center">
+                            <h4 class="text-uppercase mb-4">Nosotros</h4>
+                            <p class="lead mb-0">Yerena Carbajal Victor Denney<br />Roblero Soto Yonathan</p>
+                        </div>
+                        <!-- Footer Social Icons-->
+                        <div class="col-lg-4 mb-5 mb-lg-0 text-center">
+                            <h4 class="text-uppercase mb-4">Nuestras Redes Sociales</h4>
+                            <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a><a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a><a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a><a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
+                        </div>
+                        <!-- Footer About Text-->
+                        <div class="col-lg-4 text-center">
+                            <h4 class="text-uppercase mb-4">Ubicacion</h4>
+                            <p class="lead mb-0">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3363.6793765797893!2d-117.04291763545277!3d32.534709181045905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d9491305bd7c7b%3A0x38e0456268bfa3ed!2sPLAZA%20DE%20LA%20TECNOLOG%C3%8DA!5e0!3m2!1ses!2smx!4v1588974877121!5m2!1ses!2smx" width="200" height="150" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            <p class="text-center" >&copy; @DateTime.Now.Year - Derechos Reservados ITT</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
