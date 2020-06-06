@@ -15,9 +15,10 @@ namespace MioBarber.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Citas
+        [Authorize]
         public ActionResult Index()
-        {
-            var citas = db.Citas.Include(c => c.Barber).Include(c => c.Corte);
+        { 
+        var citas = db.Citas.Include(c => c.Barber).Include(c => c.Corte);
             return View(citas.ToList());
         }
 
@@ -55,7 +56,7 @@ namespace MioBarber.Controllers
             {
                 db.Citas.Add(cita);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
 
             ViewBag.BarberId = new SelectList(db.Barbers, "id", "Name", cita.BarberId);
